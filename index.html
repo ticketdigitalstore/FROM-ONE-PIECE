@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>ONE PIECE RUN REGISTRATION</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
 <style>
 
@@ -19,8 +19,7 @@
 body{
     font-family:'Poppins',sans-serif;
     overflow-x:hidden;
-    background:
-    linear-gradient(to bottom,#6fe5ff,#2f9eff,#0056ff);
+    background:linear-gradient(to bottom,#6fe5ff,#2f9eff,#0056ff);
     min-height:100vh;
     color:white;
 }
@@ -49,7 +48,7 @@ body{
     }
 }
 
-/* CLOUDS */
+/* ================= CLOUD ================= */
 
 .cloud{
     position:absolute;
@@ -145,6 +144,8 @@ body{
     }
 }
 
+/* ================= LOGO ================= */
+
 .logo{
     text-align:center;
     margin-bottom:40px;
@@ -205,6 +206,10 @@ textarea::placeholder{
     color:#e7e7e7;
 }
 
+select option{
+    color:black;
+}
+
 textarea{
     resize:none;
     min-height:120px;
@@ -262,6 +267,7 @@ textarea{
 .summary-item{
     margin-bottom:12px;
     font-size:15px;
+    word-break:break-word;
 }
 
 /* ================= QRIS ================= */
@@ -282,7 +288,7 @@ textarea{
 
 .checkbox{
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     gap:15px;
     margin-top:20px;
     font-weight:600;
@@ -291,6 +297,7 @@ textarea{
 .checkbox input{
     width:22px;
     height:22px;
+    margin-top:2px;
 }
 
 /* ================= LOADING ================= */
@@ -298,8 +305,7 @@ textarea{
 .loading-screen{
     position:fixed;
     inset:0;
-    background:
-    linear-gradient(to bottom,#6fe5ff,#0056ff);
+    background:linear-gradient(to bottom,#6fe5ff,#0056ff);
     display:none;
     justify-content:center;
     align-items:center;
@@ -379,7 +385,7 @@ textarea{
 @media(max-width:700px){
 
     .card{
-        padding:30px;
+        padding:30px 20px;
     }
 
     .logo h1{
@@ -388,6 +394,10 @@ textarea{
 
     .success h1{
         font-size:45px;
+    }
+
+    .loading-screen h2{
+        font-size:35px;
     }
 
 }
@@ -412,52 +422,52 @@ textarea{
         </div>
 
         <div class="form-group">
-            <label>Nama Lengkap</label>
-            <input type="text" id="nama" placeholder="Masukkan Nama Lengkap">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" placeholder="Masukkan Nama Lengkap" />
         </div>
 
         <div class="form-group">
-            <label>Tempat / Tanggal Lahir</label>
-            <input type="text" id="ttl" placeholder="Contoh: Jakarta, 01 Januari 2000">
+            <label for="ttl">Tempat / Tanggal Lahir</label>
+            <input type="text" id="ttl" placeholder="Contoh: Jakarta, 01 Januari 2000" />
         </div>
 
         <div class="form-group">
-            <label>Nomor Identitas</label>
-            <input type="text" id="identitas" placeholder="KTP / SIM / PASSPORT / KARTU PELAJAR">
+            <label for="identitas">Nomor Identitas</label>
+            <input type="text" id="identitas" placeholder="KTP / SIM / PASSPORT / KARTU PELAJAR" />
         </div>
 
         <div class="form-group">
-            <label>E-mail Aktif</label>
-            <input type="email" id="email" placeholder="example@gmail.com">
+            <label for="email">E-mail Aktif</label>
+            <input type="email" id="email" placeholder="example@gmail.com" />
         </div>
 
         <div class="form-group">
-            <label>No. Whatsapp</label>
-            <input type="text" id="wa" placeholder="08xxxxxxxxxx">
+            <label for="wa">No. Whatsapp</label>
+            <input type="text" id="wa" placeholder="08xxxxxxxxxx" />
         </div>
 
         <div class="form-group">
-            <label>Alamat Lengkap</label>
+            <label for="alamat">Alamat Lengkap</label>
             <textarea id="alamat" placeholder="Masukkan alamat lengkap"></textarea>
         </div>
 
         <div class="form-group">
-            <label>Size Jersey</label>
+            <label for="sizejersey">Size Jersey</label>
             <select id="sizejersey">
                 <option value="">Pilih Size Jersey</option>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-                <option>XXL</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>Category</label>
+            <label for="category">Category</label>
             <select id="category">
                 <option value="">Pilih Category</option>
-                <option>5K - Rp. 250.000</option>
+                <option value="5K - Rp. 250.000">5K - Rp. 250.000</option>
             </select>
         </div>
 
@@ -479,17 +489,17 @@ textarea{
         <div class="summary" id="summaryData"></div>
 
         <div class="qris">
-            <img src="qris-pembayaran7.png" alt="QRIS">
+            <img src="qris-pembayaran7.png" alt="QRIS Pembayaran" />
         </div>
 
         <div class="form-group">
-            <label>Upload Bukti Pembayaran</label>
-            <input type="file" id="bukti">
+            <label for="bukti">Upload Bukti Pembayaran</label>
+            <input type="file" id="bukti" accept="image/*,.pdf" />
         </div>
 
         <div class="checkbox">
-            <input type="checkbox" id="check">
-            <label>Saya Telah Melakukan Pembayaran</label>
+            <input type="checkbox" id="check" />
+            <label for="check">Saya Telah Melakukan Pembayaran</label>
         </div>
 
         <button class="btn btn-disabled" id="payBtn" disabled>
@@ -507,7 +517,8 @@ textarea{
         <h1>PEMBAYARAN BERHASIL</h1>
 
         <p>
-            Selamat! Registrasi ONE PIECE RUN INDONESIA 2026 berhasil.<br>
+            Selamat! Registrasi ONE PIECE RUN INDONESIA 2026 berhasil.
+            <br />
             Sampai jumpa di garis start nakama!
         </p>
 
@@ -527,29 +538,37 @@ textarea{
 
 <script>
 
+/* ================= ELEMENT ================= */
+
+const nama = document.getElementById("nama");
+const ttl = document.getElementById("ttl");
+const identitas = document.getElementById("identitas");
+const email = document.getElementById("email");
+const wa = document.getElementById("wa");
+const alamat = document.getElementById("alamat");
+const sizejersey = document.getElementById("sizejersey");
+const category = document.getElementById("category");
+
+const nextBtn = document.getElementById("nextBtn");
+
 /* ================= VALIDATION PAGE 1 ================= */
 
 const inputs = [
-    "nama",
-    "ttl",
-    "identitas",
-    "email",
-    "wa",
-    "alamat",
-    "sizechart",
-    "sizejersey",
-    "category"
+    nama,
+    ttl,
+    identitas,
+    email,
+    wa,
+    alamat,
+    sizejersey,
+    category
 ];
-
-const nextBtn = document.getElementById("nextBtn");
 
 function validatePage1(){
 
     let filled = true;
 
-    inputs.forEach(id=>{
-
-        const el = document.getElementById(id);
+    inputs.forEach((el)=>{
 
         if(el.value.trim() === ""){
             filled = false;
@@ -573,10 +592,10 @@ function validatePage1(){
 
 }
 
-inputs.forEach(id=>{
+inputs.forEach((el)=>{
 
-    document.getElementById(id).addEventListener("input", validatePage1);
-    document.getElementById(id).addEventListener("change", validatePage1);
+    el.addEventListener("input", validatePage1);
+    el.addEventListener("change", validatePage1);
 
 });
 
@@ -594,7 +613,6 @@ nextBtn.addEventListener("click", ()=>{
         <div class="summary-item"><b>Email:</b> ${email.value}</div>
         <div class="summary-item"><b>Whatsapp:</b> ${wa.value}</div>
         <div class="summary-item"><b>Alamat:</b> ${alamat.value}</div>
-        <div class="summary-item"><b>Size Chart:</b> ${sizechart.value}</div>
         <div class="summary-item"><b>Size Jersey:</b> ${sizejersey.value}</div>
         <div class="summary-item"><b>Category:</b> ${category.value}</div>
     `;
@@ -638,11 +656,15 @@ payBtn.addEventListener("click", ()=>{
 
         document.getElementById("loadingScreen").style.display = "none";
 
-        document.getElementById("page2").style.display = "none";
-
+        document.getElementById("page2").classList.remove("active");
         document.getElementById("successPage").style.display = "block";
 
-    },5000);
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    },3000);
 
 });
 
