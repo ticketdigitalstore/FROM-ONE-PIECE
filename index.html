@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ONE PIECE RUN REGISTRATION</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    background:
+    linear-gradient(to bottom,#6fe5ff,#2f9eff,#0056ff);
+    min-height:100vh;
+    color:white;
+}
+
+/* ================= BACKGROUND ================= */
+
+.bg-grid{
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+    background-size:60px 60px;
+    transform:perspective(800px) rotateX(70deg);
+    opacity:.4;
+    z-index:-2;
+    animation:gridMove 10s linear infinite;
+}
+
+@keyframes gridMove{
+    from{
+        transform:perspective(800px) rotateX(70deg) translateY(0);
+    }
+    to{
+        transform:perspective(800px) rotateX(70deg) translateY(60px);
+    }
+}
+
+/* CLOUDS */
+
+.cloud{
+    position:absolute;
+    background:white;
+    border-radius:100px;
+    opacity:.7;
+    filter:blur(2px);
+}
+
+.cloud::before,
+.cloud::after{
+    content:"";
+    position:absolute;
+    background:white;
+    border-radius:50%;
+}
+
+.cloud1{
+    width:220px;
+    height:70px;
+    top:100px;
+    left:-300px;
+    animation:cloudMove 35s linear infinite;
+}
+
+.cloud1::before{
+    width:90px;
+    height:90px;
+    top:-30px;
+    left:40px;
+}
+
+.cloud1::after{
+    width:110px;
+    height:110px;
+    top:-40px;
+    right:30px;
+}
+
+@keyframes cloudMove{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(180vw);
+    }
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    width:100%;
+    max-width:850px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(20px);
+    border-radius:40px;
+    padding:50px;
+    border:3px solid rgba(255,255,255,.2);
+    position:relative;
+    overflow:hidden;
+    animation:fadeIn 1s ease;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:radial-gradient(circle,#fff40066,transparent 70%);
+    top:-200px;
+    right:-200px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.logo h1{
+    font-family:'Luckiest Guy',cursive;
+    font-size:65px;
+    line-height:1;
+    color:#fff400;
+    text-shadow:
+    0 0 10px #ff0000,
+    0 0 30px #ff0000;
+}
+
+.logo p{
+    margin-top:15px;
+    font-weight:600;
+}
+
+/* ================= FORM ================= */
+
+.form-group{
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:700;
+    font-size:15px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:18px 20px;
+    border:none;
+    outline:none;
+    border-radius:18px;
+    background:rgba(255,255,255,.18);
+    color:white;
+    font-size:16px;
+    border:2px solid transparent;
+    transition:.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#fff400;
+    background:rgba(255,255,255,.25);
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#e7e7e7;
+}
+
+textarea{
+    resize:none;
+    min-height:120px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+    width:100%;
+    padding:20px;
+    border:none;
+    border-radius:100px;
+    font-size:18px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.4s;
+    margin-top:20px;
+}
+
+.btn-disabled{
+    background:#8a8a8a;
+    cursor:not-allowed;
+    opacity:.6;
+}
+
+.btn-active{
+    background:linear-gradient(45deg,#ff2d2d,#ff8800);
+    color:white;
+    box-shadow:0 10px 30px rgba(255,0,0,.4);
+}
+
+.btn-active:hover{
+    transform:translateY(-5px) scale(1.02);
+}
+
+/* ================= PAGE ================= */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* ================= SUMMARY ================= */
+
+.summary{
+    background:rgba(255,255,255,.15);
+    padding:25px;
+    border-radius:25px;
+    margin-bottom:30px;
+}
+
+.summary-item{
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+/* ================= QRIS ================= */
+
+.qris{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.qris img{
+    width:280px;
+    max-width:100%;
+    border-radius:25px;
+    box-shadow:0 0 30px rgba(255,255,255,.4);
+}
+
+/* ================= CHECKBOX ================= */
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+    font-weight:600;
+}
+
+.checkbox input{
+    width:22px;
+    height:22px;
+}
+
+/* ================= LOADING ================= */
+
+.loading-screen{
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(to bottom,#6fe5ff,#0056ff);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+}
+
+.loader{
+    width:140px;
+    height:140px;
+    border:10px solid rgba(255,255,255,.2);
+    border-top:10px solid #fff400;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+.loading-screen h2{
+    margin-top:30px;
+    font-family:'Luckiest Guy',cursive;
+    font-size:50px;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ================= SUCCESS ================= */
+
+.success{
+    text-align:center;
+    display:none;
+    animation:successAnim 1s ease;
+}
+
+@keyframes successAnim{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.success-icon{
+    font-size:120px;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+.success h1{
+    font-family:'Luckiest Guy',cursive;
+    font-size:70px;
+    margin-top:20px;
+    color:#fff400;
+}
+
+.success p{
+    margin-top:20px;
+    font-size:20px;
+    line-height:1.8;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:700px){
+
+    .card{
+        padding:30px;
+    }
+
+    .logo h1{
+        font-size:45px;
+    }
+
+    .success h1{
+        font-size:45px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<div class="cloud cloud1"></div>
+
+<div class="container">
+
+    <!-- PAGE 1 -->
+
+    <div class="card page active" id="page1">
+
+        <div class="logo">
+            <h1>ONE PIECE RUN</h1>
+            <p>INDONESIA 2026 REGISTRATION</p>
+        </div>
+
+        <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="nama" placeholder="Masukkan Nama Lengkap">
+        </div>
+
+        <div class="form-group">
+            <label>Tempat / Tanggal Lahir</label>
+            <input type="text" id="ttl" placeholder="Contoh: Jakarta, 01 Januari 2000">
+        </div>
+
+        <div class="form-group">
+            <label>Nomor Identitas</label>
+            <input type="text" id="identitas" placeholder="KTP / SIM / PASSPORT / KARTU PELAJAR">
+        </div>
+
+        <div class="form-group">
+            <label>E-mail Aktif</label>
+            <input type="email" id="email" placeholder="example@gmail.com">
+        </div>
+
+        <div class="form-group">
+            <label>No. Whatsapp</label>
+            <input type="text" id="wa" placeholder="08xxxxxxxxxx">
+        </div>
+
+        <div class="form-group">
+            <label>Alamat Lengkap</label>
+            <textarea id="alamat" placeholder="Masukkan alamat lengkap"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Size Chart</label>
+            <select id="sizechart">
+                <option value="">Pilih Size</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Size Jersey</label>
+            <select id="sizejersey">
+                <option value="">Pilih Size Jersey</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <select id="category">
+                <option value="">Pilih Category</option>
+                <option>5K - Rp. 250.000</option>
+            </select>
+        </div>
+
+        <button class="btn btn-disabled" id="nextBtn" disabled>
+            SELANJUTNYA
+        </button>
+
+    </div>
+
+    <!-- PAGE 2 -->
+
+    <div class="card page" id="page2">
+
+        <div class="logo">
+            <h1>PAYMENT</h1>
+            <p>Konfirmasi Pembayaran</p>
+        </div>
+
+        <div class="summary" id="summaryData"></div>
+
+        <div class="qris">
+            <img src="qris-pembayaran.png" alt="QRIS">
+        </div>
+
+        <div class="form-group">
+            <label>Upload Bukti Pembayaran</label>
+            <input type="file" id="bukti">
+        </div>
+
+        <div class="checkbox">
+            <input type="checkbox" id="check">
+            <label>Saya Telah Melakukan Pembayaran</label>
+        </div>
+
+        <button class="btn btn-disabled" id="payBtn" disabled>
+            BAYAR SEKARANG
+        </button>
+
+    </div>
+
+    <!-- SUCCESS -->
+
+    <div class="card success" id="successPage">
+
+        <div class="success-icon">🏴‍☠️</div>
+
+        <h1>PEMBAYARAN BERHASIL</h1>
+
+        <p>
+            Selamat! Registrasi ONE PIECE RUN INDONESIA 2026 berhasil.<br>
+            Sampai jumpa di garis start nakama!
+        </p>
+
+    </div>
+
+</div>
+
+<!-- LOADING -->
+
+<div class="loading-screen" id="loadingScreen">
+
+    <div class="loader"></div>
+
+    <h2>PROCESSING...</h2>
+
+</div>
+
+<script>
+
+/* ================= VALIDATION PAGE 1 ================= */
+
+const inputs = [
+    "nama",
+    "ttl",
+    "identitas",
+    "email",
+    "wa",
+    "alamat",
+    "sizechart",
+    "sizejersey",
+    "category"
+];
+
+const nextBtn = document.getElementById("nextBtn");
+
+function validatePage1(){
+
+    let filled = true;
+
+    inputs.forEach(id=>{
+
+        const el = document.getElementById(id);
+
+        if(el.value.trim() === ""){
+            filled = false;
+        }
+
+    });
+
+    if(filled){
+
+        nextBtn.disabled = false;
+        nextBtn.classList.remove("btn-disabled");
+        nextBtn.classList.add("btn-active");
+
+    }else{
+
+        nextBtn.disabled = true;
+        nextBtn.classList.remove("btn-active");
+        nextBtn.classList.add("btn-disabled");
+
+    }
+
+}
+
+inputs.forEach(id=>{
+
+    document.getElementById(id).addEventListener("input", validatePage1);
+    document.getElementById(id).addEventListener("change", validatePage1);
+
+});
+
+/* ================= NEXT PAGE ================= */
+
+nextBtn.addEventListener("click", ()=>{
+
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+
+    document.getElementById("summaryData").innerHTML = `
+        <div class="summary-item"><b>Nama:</b> ${nama.value}</div>
+        <div class="summary-item"><b>TTL:</b> ${ttl.value}</div>
+        <div class="summary-item"><b>Identitas:</b> ${identitas.value}</div>
+        <div class="summary-item"><b>Email:</b> ${email.value}</div>
+        <div class="summary-item"><b>Whatsapp:</b> ${wa.value}</div>
+        <div class="summary-item"><b>Alamat:</b> ${alamat.value}</div>
+        <div class="summary-item"><b>Size Chart:</b> ${sizechart.value}</div>
+        <div class="summary-item"><b>Size Jersey:</b> ${sizejersey.value}</div>
+        <div class="summary-item"><b>Category:</b> ${category.value}</div>
+    `;
+
+});
+
+/* ================= PAYMENT VALIDATION ================= */
+
+const bukti = document.getElementById("bukti");
+const check = document.getElementById("check");
+const payBtn = document.getElementById("payBtn");
+
+function validatePayment(){
+
+    if(bukti.files.length > 0 && check.checked){
+
+        payBtn.disabled = false;
+        payBtn.classList.remove("btn-disabled");
+        payBtn.classList.add("btn-active");
+
+    }else{
+
+        payBtn.disabled = true;
+        payBtn.classList.remove("btn-active");
+        payBtn.classList.add("btn-disabled");
+
+    }
+
+}
+
+bukti.addEventListener("change", validatePayment);
+check.addEventListener("change", validatePayment);
+
+/* ================= PAYMENT PROCESS ================= */
+
+payBtn.addEventListener("click", ()=>{
+
+    document.getElementById("loadingScreen").style.display = "flex";
+
+    setTimeout(()=>{
+
+        document.getElementById("loadingScreen").style.display = "none";
+
+        document.getElementById("page2").style.display = "none";
+
+        document.getElementById("successPage").style.display = "block";
+
+    },5000);
+
+});
+
+</script>
+
+</body>
+</html>
